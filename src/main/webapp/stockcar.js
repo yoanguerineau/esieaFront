@@ -1,3 +1,6 @@
+if (!config && global.config) {
+	config = global.config
+}
 console.log(config.urlBack)
 var contexte;
 
@@ -370,7 +373,7 @@ function genererPagination(nbLignes, active) {
 	selectionnerPage(active, nbLignes);
 }
 
-function calculerNbPages(nbLignes) {
+const calculerNbPages = (nbLignes) => {
 	var nbPage = Math.trunc(nbLignes / config.ligneParPage);
 	if(nbLignes % config.ligneParPage != 0) {
 		nbPage = nbPage + 1;
@@ -417,3 +420,5 @@ class Voiture {
 	this.prix = prix;
   }
 }
+
+module.exports = { calculerNbPages }
